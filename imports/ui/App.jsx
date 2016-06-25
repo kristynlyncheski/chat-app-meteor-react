@@ -62,6 +62,7 @@ const App = React.createClass({
         if (message.author.id === this.props.currentUser._id && message.recipient._id === this.state.currentChat._id){
           return message;
         } else if (message.author.id === this.state.currentChat._id && message.recipient._id === this.props.currentUser._id){
+          Meteor.call('messages.markRead', message._id);
           return message;
         }
       });

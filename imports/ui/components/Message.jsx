@@ -13,7 +13,8 @@ const Message = React.createClass({
 
     var months = ["January" , "February" , "March" , "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    date = months[month] + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes;
+    // date = months[month] + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes;
+    date = '(' + hours + ':' + minutes + ')';
 
     return date;
   },
@@ -28,7 +29,7 @@ const Message = React.createClass({
 
     return (
       <div className={className}>
-        <p className="message-info">{message.author.username} - <span className="message-date">{this.showDate()}</span></p>
+        <p className="message-info">{message.author.username} <span className="message-date">{this.showDate()}</span></p>
         <p className="message-text">{message.text}</p>
       </div>
     );

@@ -29,6 +29,17 @@ Meteor.methods({
         username: Meteor.users.findOne(this.userId).username,
       },
       recipient: recipient,
+      read: false,
     });
+  },
+  'messages.markRead'(messageId){
+    check(messageId, String);
+
+    const message = Messages.findOne(messageId);
+    // if (task.private && task.owner !== this.userId){
+    //   throw new Meteor.Error('not-authorized');
+    // }
+
+    Messages.update(messageId, { $set: { read: true } });
   },
 });
