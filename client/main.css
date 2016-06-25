@@ -2,6 +2,10 @@ html, body, #app, .container, .sidebar-container, .chat-container {
   height:100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family:'Open Sans', sans-serif;
   background-color:#fff;
@@ -79,7 +83,8 @@ ul.user-list li:hover {
 }
 
 ul.user-list li.selected-user {
-  font-weight:700;
+  /*font-weight:700;*/
+  background-color: rgba(0,0,0,0.3);
 }
 
 /* CHAT CONTAINER STYLES */
@@ -111,13 +116,14 @@ ul.user-list li.selected-user {
 }
 
 .current-chat-name {
-  height:40px;
-  padding:1rem 2rem;
-  background:red;
+  width:100%;
+  height:60px;
+  background-color:rgba(173,186,189,0.2);
+  border-bottom: 2px solid #ADBABD;
 }
 
 .current-chat-name h2 {
-  margin:0;
+  margin:1rem 2rem;
 }
 
 .messages-container {
@@ -125,45 +131,71 @@ ul.user-list li.selected-user {
   display: flex;
   flex-flow:column nowrap;
   justify-content: flex-end;
-  padding:1.5rem 2rem;
+  padding:1rem 2rem;
   overflow-y:scroll;
 }
 
+/* MESSAGE STYLES */
 .messages-item {
-  background-color:yellow;
   border-radius:20px;
-  margin:10px 0;
+  margin:10px auto 0 0;
   width:60%;
 }
 
 .messages-item.owner {
   text-align:right;
-  margin: 10px 0 10px auto;
+  margin: 10px 0 0 auto;
+}
+
+.messages-item p {
+  margin: 0.2rem 0;
+}
+
+.message-item p.message-info {
+  margin-left:0.8rem;
+}
+
+.messages-item.owner p.message-info {
+  margin-left: 0;
+  margin-right: 0.8rem;
+}
+
+span.message-date {
 
 }
 
-.message-form-container {
-  width:100%;
-  min-height: 50px;
-  background-color:blue;
-}
-
-.message-form {
-  margin:5px;
-  position:relative;
-  display:flex;
-  flex-flow:row nowrap;
-  min-height: 20px;
+p.message-text {
+  display: inline-block;
+  padding:8px 15px;
+  border-radius: 10px;
+  background-color:rgba(173,186,189,0.5);
 }
 
 /* INPUT STYLES */
+.message-form-container {
+  width:100%;
+  height: 86px;
+  background-color:rgba(106,169,233,0.3);
+  border-top: 2px solid #6AA9E9;
+}
+
+.message-form {
+  margin:1rem 2rem;
+  position:relative;
+  display:flex;
+  flex-flow:row nowrap;
+  align-items:center;
+  /*position:relative;*/
+}
+
 #message-input {
   width:100%;
   outline:none;
   border-radius:10px;
+  border:none;
   resize: none;
   font-size:14px;
-  padding: 5px 10px;
+  padding: 10px 40px 10px 10px;
   overflow-y: hidden;
 }
 
@@ -177,8 +209,12 @@ ul.user-list li.selected-user {
   text-align:center;
   width:40px;
   height:40px;
+  /*position:fixed;*/
+  /*right: 20px;*/
+  /*margin-top: 6px;*/
+  background:#43cea2;
 }
 
 #submit-button:hover {
-  background-color:yellow;
+  background-color:#6AA9E9;
 }

@@ -33,9 +33,11 @@ const App = React.createClass({
     const text = document.getElementById('message-input').value;
     const recipient = this.state.currentChat;
 
-    Meteor.call('messages.insert', text, recipient);
+    if (text) {
+      Meteor.call('messages.insert', text, recipient);
 
-    document.getElementById('message-input').value = '';
+      document.getElementById('message-input').value = '';
+    }
   },
   renderMessages: function(){
     var messages = this.props.messages;
@@ -85,6 +87,7 @@ const App = React.createClass({
           {this.props.currentUser ?
             <UserList
               currentUser={this.props.currentUser}
+              currentChat={this.state.currentChat}
               allUsers={this.props.allUsers}
               onSelectUser={this.handleSelectUser}
             /> : ''

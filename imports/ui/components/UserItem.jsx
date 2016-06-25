@@ -16,6 +16,12 @@ const UserItem = React.createClass({
     event.target.classList.add("selected-user");
   },
   render: function(){
+    if (this.props.currentChat._id === 'global' && this.props.user._id === 'global'){
+      return (
+        <li className="selected-user" key={this.props.user._id} onClick={this.selectUser}>{this.props.user.username}</li>
+      );
+    }
+
     return (
       <li key={this.props.user._id} onClick={this.selectUser}>{this.props.user.username}</li>
     );

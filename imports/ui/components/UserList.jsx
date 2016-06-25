@@ -18,6 +18,7 @@ const UserList = React.createClass({
             key={index}
             user={user}
             onSelectUser={this.props.onSelectUser}
+            currentChat={this.props.currentChat}
           />
         )
       });
@@ -34,6 +35,7 @@ const UserList = React.createClass({
           key="global"
           user={global}
           onSelectUser={this.props.onSelectUser}
+          currentChat={this.props.currentChat}
         />
         {list}
       </ul>

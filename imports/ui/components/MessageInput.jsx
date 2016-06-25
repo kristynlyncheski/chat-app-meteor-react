@@ -1,6 +1,18 @@
 import React from 'react';
 
 const MessageInput = React.createClass({
+  componentDidMount: function(){
+
+    var messageInput = this.refs.messageInput;
+    var that = this;
+    messageInput.addEventListener("keydown", function(event){
+      if (event.keyCode == 13) {
+        event.preventDefault();
+        that.props.onSubmit(event);
+        // console.log("enter key was pressed");
+      };
+    });
+  },
   render: function(){
     return (
       <div className="message-form-container">
