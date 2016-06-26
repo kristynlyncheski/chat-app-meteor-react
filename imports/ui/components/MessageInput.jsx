@@ -9,7 +9,6 @@ const MessageInput = React.createClass({
       if (event.keyCode == 13) {
         event.preventDefault();
         that.props.onSubmit(event);
-        // console.log("enter key was pressed");
       };
     });
   },

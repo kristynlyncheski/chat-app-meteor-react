@@ -20,7 +20,6 @@ const Message = React.createClass({
   },
   render: function(){
     var message = this.props.message;
-    // var date = message.createdAt.toString();
     if (message.author.id === this.props.currentUser._id){
       var className = 'messages-item owner';
     } else {

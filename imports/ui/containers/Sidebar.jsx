@@ -21,7 +21,6 @@ const Sidebar = React.createClass({
             allUsers={this.props.allUsers}
           /> : ''
         }
-
       </div>
     );
   }

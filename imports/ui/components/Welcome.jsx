@@ -13,7 +13,7 @@ const Welcome = React.createClass({
   render: function(){
     return (
       <div className="welcome">
-        <h1>Name of App</h1>
+        <h1>Chatr <i className="fa fa-comment-o" aria-hidden="true"></i></h1>
         {this.renderWelcome()}
         <hr className="small-hr"/>
       </div>

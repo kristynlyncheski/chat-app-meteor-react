@@ -5,8 +5,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Messages } from '../api/messages.js';
 
 import Sidebar from './containers/Sidebar';
-// import Welcome from './components/Welcome';
-// import UserList from './components/UserList';
 import ChatContainer from './containers/ChatContainer';
 import Message from './components/Message';
 
@@ -20,17 +18,8 @@ const App = React.createClass({
         username: 'global',
         _id: 'global',
       },
-      // unreadMessages: [],
-    }
+    };
   },
-  // componentDidMount: function(){
-    // console.log(this.props.messages);
-    // this.setState({
-    //   messages: this.props.messages
-    // })
-    // this.checkUnread();
-  // },
-
   componentDidMount: function(){
     var hamButton = document.querySelector('.hamburger-button');
 
@@ -50,6 +39,27 @@ const App = React.createClass({
       animateHamburger();
       slideMenu();
     });
+  },
+  componentWillReceiveProps(nextProps){
+    // console.log(nextProps.currentUser,this.props.currentUser);
+    if(nextProps.currentUser && this.props.currentUser){
+      if (nextProps.currentUser._id !== this.props.currentUser._id){
+        this.setState({
+          currentChat: {
+            username: 'global',
+            _id: 'global',
+          },
+        });
+      }
+    } else if (!nextProps.currentUser || !this.props.currentUser){
+      this.setState({
+        currentChat: {
+          username: 'global',
+          _id: 'global',
+        },
+      });
+    };
+
   },
   handleSelectUser: function(user){
     // console.log(user);
@@ -106,32 +116,6 @@ const App = React.createClass({
       ));
     };
   },
-  // checkUnread: function(){
-  //   var messages = this.props.messages;
-  //   var currentUserUnread = messages.filter(message => {
-  //     if (message.recipient._id === this.props.currentUser._id && message.read === false){
-  //       return message;
-  //     }
-  //   });
-  //
-  //   console.log(currentUserUnread);
-  //
-  //   // var unreadArr = [];
-
-    // for (var i = 0; i < currentUserMessages.length; i++){
-      // var message = currentUserMessages[i];
-      // if (!message.read){
-      // if (message.author.id !== currentChat._id && !message.read){
-    //     if (unreadArr.indexOf(message.author.id) === -1) {
-    //       unreadArr.push(message.author.id);
-    //     }
-      // }
-    // };
-
-    // this.setState({
-      // unreadMessages: unreadArr,
-    // });
-  // },
   render: function(){
     // console.log("allUsers",this.props.allUsers);
     return (
@@ -161,7 +145,7 @@ const App = React.createClass({
               onSubmit={this.handleSubmit}
             /> :
             <div className="sign-in-message">
-              <p>Sign in to start chatting!</p>
+              <p>Sign in to start using Chatr!</p>
             </div>
           }
         </div>

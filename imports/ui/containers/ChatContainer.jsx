@@ -4,7 +4,6 @@ import MessageInput from '../components/MessageInput';
 
 const ChatContainer = React.createClass({
   render: function(){
-    // console.log(this.props.currentChat);
     return (
       <div className="inner-chat-container">
         <div className="current-chat-name">
@@ -23,7 +22,3 @@ const ChatContainer = React.createClass({
 });
 
 export default ChatContainer;
-
-// <h2>{this.props.currentChat.name}</h2>
-
-//currentChat={this.props.currentChat}
