@@ -5,16 +5,20 @@ const Message = React.createClass({
     var message = this.props.message;
     var date = message.createdAt;
 
-    var month = date.getMonth();
-    var day = date.getDate();
-    var year = date.getFullYear();
+    // var month = date.getMonth();
+    // var day = date.getDate();
+    // var year = date.getFullYear();
     var hours = date.getHours();
     var minutes = date.getMinutes();
+    if (minutes < 10){
+      minutes = '0' + minutes;
+    }
 
-    var months = ["January" , "February" , "March" , "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    // var months = ["January" , "February" , "March" , "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // date = months[month] + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes;
     date = '(' + hours + ':' + minutes + ')';
+
 
     return date;
   },

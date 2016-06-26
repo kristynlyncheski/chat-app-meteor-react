@@ -6,3 +6,6 @@ if there were thousands of messages, would have to find more effective way than 
 
 
 get rid of all "vars"
+
+
+add date
