@@ -1,15 +1,3 @@
-
-if there were thousands of messages, would have to find more effective way than looops/maps
-
-
-
-get rid of all "vars"
-
-
-add date
-
-
-
 Chatr
 by Kristyn Lyncheski
 
