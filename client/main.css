@@ -34,6 +34,10 @@ body {
   overflow-y:scroll;
 }
 
+.mobile-nav {
+  display:none;
+}
+
 #login-buttons {
   display: block;
   background-color: rgba(0,0,0,0.3);
@@ -44,6 +48,10 @@ body {
   border-radius: 20px;
   letter-spacing:1px;
   font-size:1rem;
+}
+
+#login-sign-in-link {
+  color:white;
 }
 
 #login-dropdown-list {
@@ -227,4 +235,105 @@ p.message-text {
 
 #submit-button:hover {
   background-color:#6AA9E9;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 640px){
+
+.container {
+  display:block;
+  /*flex-flow:column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;*/
+}
+
+#login-buttons {
+  width: 75%;
+  margin: 1rem 0 1rem auto;
+}
+
+.mobile-nav {
+  width:85%;
+  margin: 0 auto;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger-wrapper {
+  position:absolute;
+  top:15px;
+}
+
+.hamburger-button {
+  position: relative;
+  z-index: 9999;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  width: 35px;
+  margin-top: 3%;
+}
+
+.hamburger-button:hover {
+  cursor: pointer;
+}
+
+.hamburger-button > span {
+  display:block;
+  height: 6px;
+  width: 35px;
+  margin-bottom: 6px;
+  background-color: #43cea2;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  transition-duration: 1s;
+  border-radius:5px;
+}
+
+.hamburger-button.open > span:first-child {
+  -webkit-transform: translateY(12px) rotate(45deg);
+  transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger-button.open > span:nth-child(2) {
+  -webkit-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+}
+.hamburger-button.open > span:last-child {
+  -webkit-transform: translateY(-12px) rotate(-45deg);
+  transform: translateY(-12px) rotate(-45deg);
+}
+
+.navbar {
+  position: absolute;
+  opacity: 0;
+  z-index: 888;
+  /*height: 100vh;*/
+  width: 80vw;
+  margin-left: -2%;
+  left: -50vw;
+  background-color: #fff;
+  color: #131112;
+  top:0;
+}
+
+.transition {
+  transition: 1s;
+}
+
+.navbar.open {
+  opacity: 1;
+  left: 0;
+}
+
+.chat-container {
+}
+
+.current-chat-name {
+  text-align:right;
+}
+
 }

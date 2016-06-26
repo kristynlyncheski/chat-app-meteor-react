@@ -12,6 +12,7 @@ const ChatContainer = React.createClass({
         </div>
         <MessagesContainer
           renderMessages={this.props.renderMessages}
+          currentChat={this.props.currentChat}
         />
         <MessageInput
           onSubmit={this.props.onSubmit}

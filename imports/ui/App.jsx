@@ -4,8 +4,9 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import { Messages } from '../api/messages.js';
 
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
+import Sidebar from './containers/Sidebar';
+// import Welcome from './components/Welcome';
+// import UserList from './components/UserList';
 import ChatContainer from './containers/ChatContainer';
 import Message from './components/Message';
 
@@ -19,7 +20,36 @@ const App = React.createClass({
         username: 'global',
         _id: 'global',
       },
+      // unreadMessages: [],
     }
+  },
+  // componentDidMount: function(){
+    // console.log(this.props.messages);
+    // this.setState({
+    //   messages: this.props.messages
+    // })
+    // this.checkUnread();
+  // },
+
+  componentDidMount: function(){
+    var hamButton = document.querySelector('.hamburger-button');
+
+    function animateHamburger() {
+      hamButton.classList.toggle('open');
+    }
+
+    function slideMenu() {
+      var navBar = document.querySelector('.navbar');
+      navBar.classList.toggle('open');
+      if (navBar.classList.contains('transition') > -1){
+        navBar.classList.add('transition');
+      }
+    }
+
+    hamButton.addEventListener('click', function() {
+      animateHamburger();
+      slideMenu();
+    });
   },
   handleSelectUser: function(user){
     // console.log(user);
@@ -38,6 +68,7 @@ const App = React.createClass({
 
       document.getElementById('message-input').value = '';
     }
+
   },
   renderMessages: function(){
     var messages = this.props.messages;
@@ -75,24 +106,51 @@ const App = React.createClass({
       ));
     };
   },
+  // checkUnread: function(){
+  //   var messages = this.props.messages;
+  //   var currentUserUnread = messages.filter(message => {
+  //     if (message.recipient._id === this.props.currentUser._id && message.read === false){
+  //       return message;
+  //     }
+  //   });
+  //
+  //   console.log(currentUserUnread);
+  //
+  //   // var unreadArr = [];
+
+    // for (var i = 0; i < currentUserMessages.length; i++){
+      // var message = currentUserMessages[i];
+      // if (!message.read){
+      // if (message.author.id !== currentChat._id && !message.read){
+    //     if (unreadArr.indexOf(message.author.id) === -1) {
+    //       unreadArr.push(message.author.id);
+    //     }
+      // }
+    // };
+
+    // this.setState({
+      // unreadMessages: unreadArr,
+    // });
+  // },
   render: function(){
     // console.log("allUsers",this.props.allUsers);
     return (
       <div className="container">
-        <div className="sidebar-container">
+        <Sidebar
+          currentUser={this.props.currentUser}
+          currentChat={this.state.currentChat}
+          allUsers={this.props.allUsers}
+          onSelectUser={this.handleSelectUser}
+        />
 
-          <AccountsUIWrapper />
-          <Welcome
-            currentUser={this.props.currentUser}
-          />
-          {this.props.currentUser ?
-            <UserList
-              currentUser={this.props.currentUser}
-              currentChat={this.state.currentChat}
-              allUsers={this.props.allUsers}
-              onSelectUser={this.handleSelectUser}
-            /> : ''
-          }
+        <div className="mobile-nav">
+          <div className="hamburger-wrapper">
+            <div className="hamburger-button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
         </div>
 
         <div className="chat-container">
